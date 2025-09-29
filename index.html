@@ -63,6 +63,8 @@
         var scene = null;
         var sceneToRender = null;
         var createDefaultEngine = function() { return new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true,  disableWebGL2Support: false}); };
+        var sceneToRender = null;
+        var createDefaultEngine = function() { return new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true,  disableWebGL2Support: false}); };
         var createScene = function () {
         var scene = new BABYLON.Scene(engine);
 
@@ -88,9 +90,8 @@
 */
 
     var mat1 = new BABYLON.StandardMaterial("mat1", scene);
-	//mat1.diffuseTexture = new BABYLON.Texture("https://cdn.polyhaven.com/asset_img/primary/playground_sand.png?height=760&quality=95", scene);
-	mat1.bumpTexture = new BABYLON.Texture("https://as2.ftcdn.net/v2/jpg/05/14/82/67/1000_F_514826792_KhISFHCpi1bAqftsRgAD9o4zHo4r7C1Q.jpg", scene);
-
+	mat1.bumpTexture = new BABYLON.Texture("https://as2.ftcdn.net/v2/jpg/05/14/82/67/1000_F_514826792_KhISFHCpi1bAqftsRgAD9o4zHo4r7C1Q.jpg", scene); //Mapa de Normales para Textura
+    mat1.diffuseColor = new BABYLON.Color3(0.94, 0.87, 0.55);
     
     // Our built-in 'ground' shape.
     var ground = BABYLON.MeshBuilder.CreateGround("ground", {width: 6, height: 6}, scene);
@@ -107,12 +108,73 @@
     	result.meshes[1].position.x = 1;
         result.meshes[1].rotation.x = BABYLON.Tools.ToRadians(45);;
         result.meshes[1].material = mat1;
-        
-  
     });
 
+    BABYLON.SceneLoader.ImportMeshAsync("", "https://julianagonz.github.io/meshmesh/", "palm_tree_55k_triangles.glb").then((result) => {
+    const palm = result.meshes[0]; // root del modelo
+    palm.position.x = 3;
+    palm.position.y = 1.4;
+    palm.rotation.x = BABYLON.Tools.ToRadians(45);
+    palm.scaling = new BABYLON.Vector3(0.8, 0.8, 0.8);
+});
+
+BABYLON.SceneLoader.ImportMeshAsync("", "https://julianagonz.github.io/meshmesh/", "palm_tree_55k_triangles.glb").then((result) => {
+    const palm = result.meshes[0]; // root del modelo
+    palm.position.x = -0.5;
+    palm.position.y = 1.3;
+    palm.rotation.x = BABYLON.Tools.ToRadians(80);
+    palm.position.z = -3.2;
+    palm.scaling = new BABYLON.Vector3(0.8, 0.8, 0.8);
+});
+
+BABYLON.SceneLoader.ImportMeshAsync("", "https://julianagonz.github.io/meshmesh/", "palm_tree_55k_triangles.glb").then((result) => {
+    const palm = result.meshes[0]; // root del modelo
+    palm.position.x = 2.7;
+    palm.position.y = 1;
+    palm.rotation.x = BABYLON.Tools.ToRadians(80);
+    palm.position.z = -2.1;
+    palm.scaling = new BABYLON.Vector3(0.8, 0.8, 0.8);
+});
+
+
+BABYLON.SceneLoader.ImportMeshAsync("", "https://julianagonz.github.io/meshmesh/", "palm_tree_55k_triangles.glb").then((result) => {
+    const palm = result.meshes[0]; // root del modelo
+    palm.position.x = 4.0;
+    palm.position.y = 1;
+    palm.rotation.x = BABYLON.Tools.ToRadians(80);
+    palm.position.z = -1.1;
+    palm.scaling = new BABYLON.Vector3(0.8, 0.8, 0.8);
+});
+
+BABYLON.SceneLoader.ImportMeshAsync("", "https://julianagonz.github.io/meshmesh/", "palm_tree_55k_triangles.glb").then((result) => {
+    const palm = result.meshes[0]; // root del modelo
+    palm.position.x = 3.8;
+    palm.position.y = 1;
+    palm.rotation.x = BABYLON.Tools.ToRadians(80);
+    palm.position.z = 1.1;
+    palm.scaling = new BABYLON.Vector3(0.8, 0.8, 0.8);
+});
+
+BABYLON.SceneLoader.ImportMeshAsync("", "https://julianagonz.github.io/meshmesh/", "campfire.glb").then((result) => {
+    	const fueguis = result.meshes[0]; // root del modelo
+        fueguis.position.x = -0.8;
+        fueguis.position.y = 1.5;
+        fueguis.rotation.x = BABYLON.Tools.ToRadians(80);
+        fueguis.position.z = 1;
+        fueguis.scaling = new BABYLON.Vector3(0.6, 0.6, 0.6);
+    });
+
+
+
+
+
+
+
+
+
+
     return scene;
-}
+};
                 window.initFunction = async function() {
                     
                     
